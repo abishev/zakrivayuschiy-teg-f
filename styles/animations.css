@@ -9,3 +9,173 @@
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 
 */
+/* Опишите в этом файле все keyframes для проекта и стили анимаций иконки Like.
+
+Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
+✦ like-icon — для svg-иконки анимированного сердца
+✦ card__like-button — для кнопки Like рядом с иконкой
+✦ card__icon-button — для кнопки, оборачивающей иконку
+✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
+✦ button__text — для обозначения текстового элемента внутри кнопки
+*/
+
+/* Ключевые кадры для масштабирования сердца */
+@keyframes heart-scale {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Ключевые кадры для появления искр */
+@keyframes sparks-flash {
+  0% {
+    opacity: 0;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+/* ===== АНИМАЦИЯ СЕРДЦА ===== */
+
+/* Состояние по умолчанию */
+.contour {
+  fill: var(--contour-color, #000);
+  transition: fill 0.1s linear;
+}
+
+.core {
+  fill: transparent;
+  transition: fill 0.3s linear 0.03s;
+}
+
+.main-body {
+  fill: transparent;
+  transition: fill 0.3s linear;
+}
+
+/* Состояние :hover */
+.like-icon:hover .core {
+  fill: var(--contour-color, #000);
+  transition: fill 0.3s linear 0s;
+}
+
+.like-icon:hover .main-body {
+  fill: var(--contour-color, #000);
+  transition: fill 0.3s linear 0.05s;
+}
+
+/* Состояние :active (зажатая кнопка) */
+.like-icon:active .core {
+  fill: var(--animation-fill-color, #ff0000);
+  transition: fill 0.3s linear 0s;
+}
+
+.like-icon:active .main-body {
+  fill: var(--animation-fill-color, #ff0000);
+  transition: fill 0.3s linear 0.05s;
+}
+
+/* Состояние is-liked (клик) */
+.like-icon.is-liked .core {
+  fill: var(--animation-fill-color, #ff0000);
+  transition: fill 0.3s linear 0s;
+}
+
+.like-icon.is-liked .main-body {
+  fill: var(--animation-fill-color, #ff0000);
+  transition: fill 0.3s linear 0.05s;
+}
+
+.like-icon.is-liked .contour {
+  fill: var(--animation-fill-color, #ff0000);
+  transition: fill 0.3s linear 0.06s;
+}
+
+/* Анимация масштабирования сердца при клике */
+.like-icon.is-liked .heart {
+  transform-origin: center;
+  animation: heart-scale 0.3s ease-in 0.1s 1;
+}
+
+/* Анимация искр при клике */
+.like-icon.is-liked .sparks {
+  animation: sparks-flash 0.3s ease-in 0.3s 1;
+}
+
+.sparks {
+  opacity: 0;
+  fill: var(--animation-fill-color, #ff0000);
+}
+
+/* ===== АНИМАЦИЯ КНОПОК Like, Сохранить, ОК ===== */
+
+.button {
+  position: relative;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.button:focus {
+  outline: none;
+}
+
+.button:focus-visible {
+  box-shadow: 2px 2px 0 0 var(--accent-color, #000);
+}
+
+.button::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--accent-color, #000);
+  transform: translateX(-100%);
+  transition: transform 0.5s ease-in-out;
+}
+
+.button:hover::after {
+  transform: translateX(0);
+}
+
+.button span,
+.button svg {
+  position: relative;
+  z-index: 1;
+  mix-blend-mode: difference;
+  color: var(--button-text-color, #fff);
+}
+
+.button svg {
+  fill: var(--button-text-color, #fff);
+}
+
+/* ===== АНИМАЦИЯ КНОПКИ С СЕРДЦЕМ ===== */
+
+.card__icon-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid transparent;
+  background: transparent;
+  transition: border-color 0.3s ease;
+}
+
+.card__icon-button:focus {
+  outline: none;
+}
+
+.card__icon-button:focus-visible {
+  border-color: var(--accent-color, #000);
+}
