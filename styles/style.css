@@ -5,13 +5,13 @@
   font-variation-settings: "wght" var(--main-weight);
   background-color: var(--bg-color);
   background-image: var(--page-bg);
-  background-attachment: scroll;
-  background-size: 100% 100dvb;
+  background-attachment: fixed;
+  background-size: cover;
   background-repeat: no-repeat;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 98px 0;
+  padding: 100px 0;
 }
 
 .header {
@@ -23,7 +23,7 @@
   align-items: center;
   text-align: center;
   padding: clamp(120px, 15vw, 129px) 0;
-  margin-bottom: 100px;
+  margin-bottom: 98px;
 }
 
 .header__logo {
@@ -61,7 +61,6 @@
 
 .card__media {
   position: relative;
-  border-top: 2px solid var(--border-color);
   border-bottom: 2px solid var(--border-color);
   max-inline-size: var(--card-image-size);
   inline-size: 100%;
@@ -111,7 +110,6 @@
 .card__text {
   font-size: 18px;
   line-height: 21px;
-  letter-spacing: 0.8px;
 }
 
 .card__buttons {
@@ -130,8 +128,8 @@
   padding: 0;
   transition: border-color 0.3s ease;
   cursor: pointer;
-  width: 45px;
-  height: 45px;
+  width: 42px;
+  height: 42px;
 }
 
 .card__icon-button:focus {
@@ -143,8 +141,9 @@
 }
 
 .card__like-button {
-  min-inline-size: 130px;
-  padding: 9px 0;
+  width: 130px;
+  height: 38px;
+  padding: 9px 17px;
 }
 
 .contour {
@@ -198,7 +197,7 @@
   display: flex;
   align-items: center;
   gap: 8px;
-  margin: 50px auto 100px;
+  margin: 50px auto 0px;
   padding: 15px 20px;
 }
 
@@ -305,7 +304,7 @@
 
   .header {
     inline-size: 100%;
-    margin-bottom: 100px;
+    margin-bottom: 98px;
   }
 
   .cards__list {
@@ -335,6 +334,7 @@
 
   .dialog {
     inline-size: 341px;
+    max-inline-size: calc(100% - 32px);
     padding: 30px 40px;
   }
 }

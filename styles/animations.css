@@ -4,22 +4,10 @@
 ✦ like-icon — для svg-иконки анимированного сердца
 ✦ card__like-button — для кнопки Like рядом с иконкой
 ✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ card__icon-button — для кнопки, оборачивающей иконку
-✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
-✦ button__text — для обозначения текстового элемента внутри кнопки
-
-*/
-/* Опишите в этом файле все keyframes для проекта и стили анимаций иконки Like.
-
-Будьте внимательны! Для корректной работы скриптов на этом сайте нужно, чтобы в HTML некоторые классы были названы особым образом:
-✦ like-icon — для svg-иконки анимированного сердца
-✦ card__like-button — для кнопки Like рядом с иконкой
-✦ card__icon-button — для кнопки, оборачивающей иконку
 ✦ is-liked — для обозначения состояния лайкнутой иконки в виде сердца
 ✦ button__text — для обозначения текстового элемента внутри кнопки
 */
 
-/* Ключевые кадры для масштабирования сердца */
 @keyframes heart-scale {
   0% {
     transform: scale(1);
@@ -32,7 +20,6 @@
   }
 }
 
-/* Ключевые кадры для появления искр */
 @keyframes sparks-flash {
   0% {
     opacity: 0;
@@ -45,9 +32,6 @@
   }
 }
 
-/* ===== АНИМАЦИЯ СЕРДЦА ===== */
-
-/* Состояние по умолчанию */
 .contour {
   fill: var(--contour-color, #000);
   transition: fill 0.1s linear;
@@ -101,13 +85,11 @@
   transition: fill 0.3s linear 0.06s;
 }
 
-/* Анимация масштабирования сердца при клике */
 .like-icon.is-liked .heart {
   transform-origin: center;
   animation: heart-scale 0.3s ease-in 0.1s 1;
 }
 
-/* Анимация искр при клике */
 .like-icon.is-liked .sparks {
   animation: sparks-flash 0.3s ease-in 0.3s 1;
 }
@@ -116,8 +98,6 @@
   opacity: 0;
   fill: var(--animation-fill-color, #ff0000);
 }
-
-/* ===== АНИМАЦИЯ КНОПОК Like, Сохранить, ОК ===== */
 
 .button {
   position: relative;
@@ -160,8 +140,6 @@
 .button svg {
   fill: var(--button-text-color, #fff);
 }
-
-/* ===== АНИМАЦИЯ КНОПКИ С СЕРДЦЕМ ===== */
 
 .card__icon-button {
   display: flex;
